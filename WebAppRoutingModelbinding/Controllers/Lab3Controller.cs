@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebAppRoutingModelbinding.Models;
 
 namespace WebAppRoutingModelbinding.Controllers
 {
-    public class Lab1Controller : Controller
+    public class Lab3Controller : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult ShowResult(int x=2, int y=3)
+        [HttpPost]
+        public IActionResult AddPerson(PersonBindingModel person)
         {
-            return Content(string.Format($"x={x}, og y={y}"));
+            return Content(string.Format($"Name={person.Name}, Age={person.Age}, Height={person.Height}"));
         }
     }
 }

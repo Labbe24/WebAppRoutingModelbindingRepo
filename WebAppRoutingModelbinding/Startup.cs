@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using Microsoft.Extensions.Hosting;
 
 namespace WebAppRoutingModelbinding
@@ -49,8 +50,11 @@ namespace WebAppRoutingModelbinding
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "AddPerson",
+                    pattern: "{controller}/{action}/{name}/{age}/{height}");
+                endpoints.MapControllerRoute(
                     name: "ShowResult",
-                    pattern: "Lab1/ShowResult/{id?}");
+                    pattern: "{controller}/{action}/{x}/{y?}");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
